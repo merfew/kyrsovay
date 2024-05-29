@@ -17,7 +17,7 @@ namespace backlaba13._1.Model
             //base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Users>().HasKey(h => new {h.id_users});
             modelBuilder.Entity<Auth>().HasKey(h => new {h.id_user});
-            modelBuilder.Entity<Cards>().HasKey(h => new { h.id_person });
+            modelBuilder.Entity<Cards>().HasKey(h => new { h.id_card });
             modelBuilder.Entity<Story>().HasKey(h => new { h.id_user });
         }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)

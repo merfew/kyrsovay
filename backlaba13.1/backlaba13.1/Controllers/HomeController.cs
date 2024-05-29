@@ -124,7 +124,7 @@ namespace backlaba13._1.Controllers
             Console.WriteLine($"{card.name}, {card.balance}");
             if (card != null)
             {
-                int id = card.id_card;
+                //int id = card.id_card;
                 int newBalance = card.balance - newstory.sum;
                 card.balance = newBalance;
                 Console.WriteLine($"{card.balance}");

@@ -26,6 +26,8 @@ export function TransferPage(){
 
         await axios.post('https://localhost:7225/Home/TransferIn', payload, { withCredentials: true })
 
+        await axios.post('https://localhost:7225/Home/TransferInPlus', payload, { withCredentials: true })
+
         }   catch (error) {
           if (axios.isAxiosError(error)) {
             // Это ошибка от Axios
@@ -119,7 +121,8 @@ export function TransferPage(){
             </Form.Group>
             </Form>
 
-            {show && <Alert style = {{marginLeft: '550px', marginTop:'25px', color: 'pink', fontSize:'20px'}} variant="danger">Перевод выполнен!</Alert>}
+            {show && <Alert style = {{marginLeft: '550px', marginTop:'25px', color: 'pink', fontSize:'20px'}} variant="success">Перевод выполнен!</Alert>}
+            {/* {show && <Alert style = {{marginLeft: '550px', color: 'pink', fontSize:'20px'}} variant="danger">Недостаточно средств</Alert>} */}
             <Button style={{ color: 'pink', borderColor: 'pink', marginLeft:'500px', marginTop:'25px', width: '300px' }} onClick={Transfer}>Перевести</Button>
         </div>
     )

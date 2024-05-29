@@ -41,19 +41,8 @@ export function CardPage() {
 
     return(
         <div style = {{marginLeft:'500px'}}>
-            {/* <Card style={{ width: '18rem', marginRight: '20px',marginTop: '20px' }}>
-               <Card.Img variant="top" src="https://egaist.info/wp-content/uploads/2021/09/karty-sberbanka-bez-platy-za-obsluzhivanie-debetovye-zarplatnye-kreditnye-finansy-12d2114.jpg" /> 
-               <Card.Body> 
-                  <Card.Title>{name1}</Card.Title> 
-                  <Card.Text> 
-                  {balance1} 
-                  </Card.Text> 
-                </Card.Body> 
-            </Card>  */}
             <Form.Label style ={{justifyContent: 'center', alignItems: 'center', fontSize: '20px', color: 'pink', fontWeight: 'bold'}}>Информация о счете</Form.Label>
             <br/>
-            {/* <img style={{ width: '180px', height: '100px' }} src="https://i.pinimg.com/564x/49/73/8f/49738fb67b9a3d6887672a843400b7b3.jpg"/> */}
-            {/* <br/> */}
             <Form.Label style ={{justifyContent: 'center', alignItems: 'center', fontSize: '20px'}}>Название счета</Form.Label>
             <br/>
             <Form.Label style ={{justifyContent: 'center', alignItems: 'center', fontSize: '20px', color: 'pink'}}>{name1}</Form.Label>

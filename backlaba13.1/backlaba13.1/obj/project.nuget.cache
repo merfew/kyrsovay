@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zoJyqRDMiMM+DmzS0qTBPBEBNUg+sivYayaShHUJpN1LL7bl2rTaxrTVxLwvgVvOHsbyencnkDAkPsFxbO8IXw==",
+  "dgSpecHash": "WIlfJlSw+IK2ZmEeFnjDCKQem6j0fonoPX+3IZQLJT9uVave/j3S8QW7FVjZkdXav6xRvLNbNV1wWS6mUtgUmg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\g_dob\\source\\repos\\backlaba13.1\\backlaba13.1\\backlaba13.1.csproj",
+  "projectFilePath": "C:\\Users\\g_dob\\OneDrive\\Рабочий стол\\ооп git\\kyrsovay\\backlaba13.1\\backlaba13.1\\backlaba13.1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\g_dob\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\g_dob\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.17\\microsoft.aspnetcore.authentication.jwtbearer.7.0.17.nupkg.sha512",

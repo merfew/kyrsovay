@@ -1,7 +1,7 @@
-// import React, { createContext, useContext } from "react";
+import React, { createContext, useContext } from "react";
 
-// const AuthContext = createContext(null);
+const AuthContext = createContext('cookies');
 
-// export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => useContext(AuthContext);
 
-// export default AuthContext;
+export default AuthContext;

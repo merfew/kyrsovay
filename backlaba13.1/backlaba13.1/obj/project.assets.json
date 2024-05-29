@@ -2357,11 +2357,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\g_dob\\source\\repos\\backlaba13.1\\backlaba13.1\\backlaba13.1.csproj",
+      "projectUniqueName": "C:\\Users\\g_dob\\OneDrive\\Рабочий стол\\ооп git\\kyrsovay\\backlaba13.1\\backlaba13.1\\backlaba13.1.csproj",
       "projectName": "backlaba13.1",
-      "projectPath": "C:\\Users\\g_dob\\source\\repos\\backlaba13.1\\backlaba13.1\\backlaba13.1.csproj",
+      "projectPath": "C:\\Users\\g_dob\\OneDrive\\Рабочий стол\\ооп git\\kyrsovay\\backlaba13.1\\backlaba13.1\\backlaba13.1.csproj",
       "packagesPath": "C:\\Users\\g_dob\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\g_dob\\source\\repos\\backlaba13.1\\backlaba13.1\\obj\\",
+      "outputPath": "C:\\Users\\g_dob\\OneDrive\\Рабочий стол\\ооп git\\kyrsovay\\backlaba13.1\\backlaba13.1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\g_dob\\AppData\\Roaming\\NuGet\\NuGet.Config",
