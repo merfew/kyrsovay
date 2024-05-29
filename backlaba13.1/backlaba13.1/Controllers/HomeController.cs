@@ -11,7 +11,7 @@ namespace backlaba13._1.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
-    public class HomeController: ControllerBase
+    public class HomeController : ControllerBase
     {
         AppDbContext dbb = new AppDbContext();
         [HttpGet]
@@ -84,7 +84,7 @@ namespace backlaba13._1.Controllers
             db.Story.Add(new Story
             {
                 id_user = 1,
-                id_transfer = 1, // Предполагая, что id_transfer всегда 1
+                id_transfer = 1,
                 otkyda = story.otkyda,
                 kyda = story.kyda,
                 sum = story.sum
@@ -111,48 +111,64 @@ namespace backlaba13._1.Controllers
         [HttpPost]
         public IActionResult TransferIn([FromBody] Story story)
         {
-            var db = new AppDbContext();
-            int id = story.id_user;
-            int sum = story.sum;
-            string otkyda = story.otkyda;
-            string kyda = story.kyda;
+            //var db = new AppDbContext();
+            Story newstory = new Story();
+            newstory.id_user = story.id_user;
+            newstory.sum = story.sum;
+            newstory.otkyda = story.otkyda;
+            newstory.kyda = story.kyda;
+            Console.WriteLine($"{newstory.sum}, {newstory.otkyda}, {newstory.kyda}");
 
-            // Получаем баланс для карты "откуда"
-            int balanceOtkyda = db.Cards
-                .Where(card => card.id_person == id && card.name == otkyda)
-                .Select(card => card.balance)
-                .FirstOrDefault();
-
-            // Рассчитываем новый баланс для карты "откуда"
-            int newBalanceOtkyda = balanceOtkyda - sum;
-            var cardToUpdateOtkyda = db.Cards
-                .FirstOrDefault(card => card.id_person == id && card.name == otkyda);
-
-            if (cardToUpdateOtkyda != null)
+            //var card = dbb.Cards.FirstOrDefault(cards => cards.name == newstory.otkyda);
+            Cards? card = (from cards in dbb.Cards where cards.name == newstory.otkyda select cards).FirstOrDefault();
+            Console.WriteLine($"{card.name}, {card.balance}");
+            if (card != null)
             {
-                cardToUpdateOtkyda.balance = newBalanceOtkyda;
+                int id = card.id_card;
+                int newBalance = card.balance - newstory.sum;
+                card.balance = newBalance;
+                Console.WriteLine($"{card.balance}");
+                //dbb.Cards.Update(card).Where(card => card.id_card == id);
+                dbb.SaveChangesAsync();
             }
-
-            // Получаем баланс для карты "куда"
-            int balanceKyda = db.Cards
-                .Where(card => card.id_person == id && card.name == kyda)
-                .Select(card => card.balance)
-                .FirstOrDefault();
-
-            // Рассчитываем новый баланс для карты "куда"
-            int newBalanceKyda = balanceKyda + sum;
-            var cardToUpdateKyda = db.Cards
-                .FirstOrDefault(card => card.id_person == id && card.name == kyda);
-
-            if (cardToUpdateKyda != null && cardToUpdateKyda != cardToUpdateOtkyda)
+            else
             {
-                cardToUpdateKyda.balance = newBalanceKyda;
+                // Обработка ошибки, если карта не найдена
+                Console.Write("Карта 'откуда' не найдена.");
+                return NotFound("Карта 'откуда' не найдена.");
             }
-
-            db.SaveChanges();
-
             return Ok();
+        }
 
+        [HttpPost]
+        public IActionResult TransferInPlus([FromBody] Story story)
+        {
+            Story newstory = new Story();
+            newstory.id_user = story.id_user;
+            newstory.sum = story.sum;
+            newstory.otkyda = story.otkyda;
+            newstory.kyda = story.kyda;
+            Console.WriteLine($"{newstory.sum}, {newstory.otkyda}, {newstory.kyda}");
+
+            Cards? card1 = (from cards in dbb.Cards where cards.name == newstory.kyda select cards).FirstOrDefault();
+            Console.WriteLine($"{card1.name}, {card1.balance}");
+            if (card1 != null)
+            {
+                int newBalance1 = card1.balance + newstory.sum;
+                card1.balance = newBalance1;
+                Console.WriteLine($"{card1.balance}");
+                //dbb.Cards.Update(card1);
+                dbb.SaveChangesAsync();
+
+            }
+            else
+            {
+                // Обработка ошибки, если карта не найдена
+                Console.Write("Карта 'куда' не найдена.");
+                return NotFound("Карта 'куда' не найдена.");
+            }
+            //dbb.SaveChanges();
+            return Ok();
         }
     }
 }
