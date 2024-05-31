@@ -17,6 +17,7 @@ namespace backlaba13._1.Controllers
         [HttpGet]
         public IActionResult GetData()
         {
+            //var cookies = HttpContext.Request.Cookies;
             var headers = HttpContext.Request.Headers;
             if (headers.TryGetValue("id", out var Id))
             {
@@ -126,10 +127,38 @@ namespace backlaba13._1.Controllers
             {
                 //int id = card.id_card;
                 int newBalance = card.balance - newstory.sum;
-                card.balance = newBalance;
-                Console.WriteLine($"{card.balance}");
-                //dbb.Cards.Update(card).Where(card => card.id_card == id);
-                dbb.SaveChangesAsync();
+                if(newBalance < 0)
+                {
+                    Console.WriteLine("Ошибка: Недостаточно средств на карте.");
+                    return Ok("Ошибка: Недостаточно средств на карте.");
+                }
+                else
+                {
+                    card.balance = newBalance;
+                    Console.WriteLine($"{card.balance}");
+                    //dbb.Cards.Update(card).Where(card => card.id_card == id);
+                    dbb.SaveChangesAsync();
+
+                    Console.WriteLine(newstory.kyda);
+
+                    Cards? card1 = (from cards in dbb.Cards where cards.name == newstory.kyda select cards).FirstOrDefault();
+                    Console.WriteLine($"{card1.name}, {card1.balance}");
+                    if (card1 != null)
+                    {
+                        int newBalance1 = card1.balance + newstory.sum;
+                        card1.balance = newBalance1;
+                        Console.WriteLine($"{card1.balance}");
+                        //dbb.Cards.Update(card1);
+                        dbb.SaveChangesAsync();
+
+                    }
+                    else
+                    {
+                        // Обработка ошибки, если карта не найдена
+                        Console.Write("Карта 'куда' не найдена.");
+                        return NotFound("Карта 'куда' не найдена.");
+                    }
+                }
             }
             else
             {

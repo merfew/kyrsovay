@@ -46,7 +46,6 @@ export function TransferOutPage(){
         };
         await axios.post('https://localhost:7225/Home/SaveHistory', payload, { withCredentials: true });
         console.log("История сохранена успешно");
-
       }
 
 

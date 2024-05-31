@@ -26,7 +26,7 @@ export function TransferPage(){
 
         await axios.post('https://localhost:7225/Home/TransferIn', payload, { withCredentials: true })
 
-        await axios.post('https://localhost:7225/Home/TransferInPlus', payload, { withCredentials: true })
+        //await axios.post('https://localhost:7225/Home/TransferInPlus', payload, { withCredentials: true })
 
         }   catch (error) {
           if (axios.isAxiosError(error)) {

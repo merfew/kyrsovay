@@ -19,7 +19,7 @@ namespace backlaba13._1.Controllers
                 //int.TryParse(Id, out int id);
                 var data = (from auth in db.Auth where (auth.email == email.ToString() && auth.password == password.ToString()) select auth);
                 var Id = (from auth in db.Auth where (auth.email == email.ToString() && auth.password == password.ToString()) select auth.id_user).FirstOrDefault();
-                HttpContext.Response.Cookies.Append("id", Id.ToString());
+                HttpContext.Response.Cookies.Append("id_user", Id.ToString());
                 List<Auth> auths = new List<Auth>();
                 foreach (var u in data)
                 {
